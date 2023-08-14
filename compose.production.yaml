@@ -10,7 +10,6 @@ services:
       - ./dbdata:/var/lib/mysql
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
-    container_name: pma
     environment:
       PMA_HOST: mysql
       PMA_PORT: 3306
