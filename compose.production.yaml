@@ -1,15 +1,19 @@
+version: '3'
 services:
   mysql:
     image: mysql:5.7
     environment:
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: develop_pass
       MYSQL_DATABASE: users
+      MYSQL_USER: 'production'
+      MYSQL_PASSWORD: 'production_password' 
     ports:
       - "6033:3306"
     volumes:
-      - ./dbdata:/var/lib/mysql
+      - ./docker/dev/db:/var/lib/mysql
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
+    container_name: pma
     environment:
       PMA_HOST: mysql
       PMA_PORT: 3306
@@ -21,8 +25,8 @@ services:
     build:
       context: app
     environment:
-      PASSWORD: root
-      USERNAME: root
+      PASSWORD: production_password
+      USERNAME: production
       SERVER: mysql
     ports:
       - "5010:5000"

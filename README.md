@@ -1,10 +1,19 @@
 ## Simple API using Flask
 
 ### Run using flask
-`python app/app.py`
+
+```bash
+python app/app.py
+```
 
 ### Run Docker
-`docker-compose -f compose.yaml up`
 
-### Run Unittest
-`python -m unit_test`
+```bash
+# for develop environment
+docker-compose -f compose.yaml up --build
+
+# for production environment
+docker-compose -f compose.production.yaml up --build
+```
+
+### Config

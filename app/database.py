@@ -5,7 +5,7 @@ import os
 load_dotenv()
 PASSWORD = os.getenv("PASSWORD")
 HOST = os.getenv("SERVER")
-USERNAME = 'root'
+USERNAME = os.getenv("USERNAME")
 DATABASE_NAME = "users"
 
 class Database:
