@@ -8,7 +8,7 @@ services:
       MYSQL_USER: 'developer'
       MYSQL_PASSWORD: 'developer_password' 
     ports:
-      - "6033:3306"
+      - "6037:3306"
     volumes:
       - ./docker/dev/db:/var/lib/mysql
   phpmyadmin:
@@ -20,7 +20,7 @@ services:
       PMA_ARBITRARY: 1
     restart: always
     ports:
-      - 8081:80
+      - 8082:80
   web:
     build:
       context: app
@@ -29,6 +29,6 @@ services:
       USERNAME: developer
       SERVER: mysql
     ports:
-      - "5010:5000"
+      - "5011:5000"
     depends_on:
       - mysql
