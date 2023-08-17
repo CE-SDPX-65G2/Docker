@@ -6,6 +6,7 @@ load_dotenv()
 PASSWORD = os.getenv("PASSWORD")
 HOST = os.getenv("SERVER")
 USERNAME = os.getenv("USERNAME")
+PORT = os.getenv("PORT")
 DATABASE_NAME = "users"
 
 class Database:
@@ -15,6 +16,7 @@ class Database:
             username = USERNAME,
             password = PASSWORD,
             database = DATABASE_NAME,
+            port = PORT,
         )
         self.cursor = self.conn.cursor()
  

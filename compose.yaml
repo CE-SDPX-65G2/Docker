@@ -1,34 +1,34 @@
 version: '3'
 services:
-  mysql:
+  mysql_dev:
     image: mysql:5.7
     environment:
       MYSQL_ROOT_PASSWORD: develop_pass
       MYSQL_DATABASE: users
-      MYSQL_USER: 'developer'
-      MYSQL_PASSWORD: 'developer_password' 
+      MYSQL_USER: developer
+      MYSQL_PASSWORD: developer_password
     ports:
-      - "6037:3306"
+      - "6034:3306"
     volumes:
-      - ./docker/dev/db:/var/lib/mysql
-  phpmyadmin:
+      - ./dev/db:/var/lib/mysql
+  phpmyadmin_dev:
     image: phpmyadmin/phpmyadmin
-    container_name: pma
     environment:
-      PMA_HOST: mysql
+      PMA_HOST: mysql_dev
       PMA_PORT: 3306
       PMA_ARBITRARY: 1
     restart: always
     ports:
       - 8082:80
-  web:
+  web_dev:
     build:
       context: app
     environment:
       PASSWORD: developer_password
       USERNAME: developer
-      SERVER: mysql
+      SERVER: mysql_dev
+      PORT: 3306
     ports:
       - "5011:5000"
     depends_on:
-      - mysql
+      - mysql_dev
